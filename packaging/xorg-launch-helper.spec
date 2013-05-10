@@ -11,6 +11,7 @@ Source1:	xorg.conf
 Source2:	xorg_done.service
 
 BuildRequires:	pkgconfig(systemd)
+BuildRequires:	pkgconfig(libsystemd-daemon)
 Requires:	/usr/bin/Xorg
 
 %description
