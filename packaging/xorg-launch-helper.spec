@@ -3,7 +3,7 @@ Version:	4
 Release:	1
 Summary:	Xorg service helper
 
-Group:		System/Base
+Group:		Graphics/X Window System
 License:	GPL-2.0
 URL:		http://foo-projects.org/~sofar/%{name}
 Source0:	http://foo-projects.org/~sofar/%{name}/%{name}-%{version}.tar.gz
