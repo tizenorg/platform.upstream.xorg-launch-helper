@@ -35,6 +35,7 @@ install -m 0644 %{SOURCE2} %{buildroot}%{_prefix}/lib/systemd/user/
 ln -sf ../xorg_done.service %{buildroot}%{_prefix}/lib/systemd/user/xorg.target.wants
 
 %files
+%license COPYING
 %defattr(-,root,root,-)
 %{_bindir}/xorg-launch-helper
 %{_prefix}/lib/systemd/user/xorg.service
