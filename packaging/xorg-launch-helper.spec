@@ -9,6 +9,7 @@ URL:		http://foo-projects.org/~sofar/%{name}
 Source0:	http://foo-projects.org/~sofar/%{name}/%{name}-%{version}.tar.gz
 Source1:	xorg.conf
 Source2:	xorg_done.service
+Source1001: 	xorg-launch-helper.manifest
 
 BuildRequires:	pkgconfig(systemd)
 BuildRequires:	pkgconfig(libsystemd-daemon)
@@ -19,6 +20,7 @@ A wrapper to launch Xorg as a service in systemd environments.
 
 %prep
 %setup -q
+cp %{SOURCE1001} .
 
 %build
 %reconfigure
@@ -35,6 +37,7 @@ install -m 0644 %{SOURCE2} %{buildroot}%{_prefix}/lib/systemd/user/
 ln -sf ../xorg_done.service %{buildroot}%{_prefix}/lib/systemd/user/xorg.target.wants
 
 %files
+%manifest %{name}.manifest
 %license COPYING
 %defattr(-,root,root,-)
 %{_bindir}/xorg-launch-helper
