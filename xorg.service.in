@@ -16,8 +16,10 @@ Description=Xorg server launch helper
 Before=xorg.target
 
 [Service]
-Type=notify
-ExecStart=@prefix@/bin/xorg-launch-helper :0 -nolisten tcp -noreset vt1
+EnvironmentFile=-/etc/sysconfig/xorg
+Type=forking
+OOMScoreAdjust=-1000
+ExecStart=@prefix@/bin/xorg-launch-helper $OPTIONS
 Restart=always
 RestartSec=10
 

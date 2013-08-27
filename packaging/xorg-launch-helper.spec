@@ -1,6 +1,6 @@
 Name:		xorg-launch-helper
 Version:	4
-Release:	1
+Release:	2
 Summary:	Xorg service helper
 
 Group:		Graphics/X Window System
@@ -35,6 +35,12 @@ mkdir -p %{buildroot}/etc/sysconfig
 install -m 644 %{SOURCE1} %{buildroot}/etc/sysconfig/xorg
 install -m 0644 %{SOURCE2} %{buildroot}%{_prefix}/lib/systemd/user/
 ln -sf ../xorg_done.service %{buildroot}%{_prefix}/lib/systemd/user/xorg.target.wants
+
+# "-sharevt" option will be removed (only) for Tizen Emulator temporarily
+# by the request from Tizen SDK (kernel) team.
+%if 0%{?simulator}
+sed -i 's/-sharevts//g' %{buildroot}/etc/sysconfig/xorg
+%endif
 
 %files
 %manifest %{name}.manifest
