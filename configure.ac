@@ -21,13 +21,13 @@ PKG_CHECK_MODULES([LIBSYSTEMD_DAEMON], [libsystemd-daemon])
 AC_SUBST(LIBSYSTEMD_DAEMON_CFLAGS)
 AC_SUBST(LIBSYSTEMD_DAEMON_LIBS)
 
-AC_ARG_WITH([systemduserunitdir], AC_HELP_STRING([--with-systemduserunitdir=DIR],
-	[path to systemd user service directory]), [path_systemduserunit=${withval}],
-	[path_systemduserunit="`$PKG_CONFIG --variable=systemduserunitdir systemd`"])
-if (test -n "${path_systemduserunit}"); then
-SYSTEMD_USERUNITDIR="${path_systemduserunit}"
-AC_SUBST(SYSTEMD_USERUNITDIR)
-AM_CONDITIONAL(SYSTEMD, test -n "${path_systemduserunit}")
+AC_ARG_WITH([systemdsystemunitdir], AC_HELP_STRING([--with-systemdsystemunitdir=DIR],
+	[path to systemd system service directory]), [path_systemdsystemunit=${withval}],
+	[path_systemdsystemunit="`$PKG_CONFIG --variable=systemdsystemunitdir systemd`"])
+if (test -n "${path_systemdsystemunit}"); then
+SYSTEMD_SYSTEMUNITDIR="${path_systemdsystemunit}"
+AC_SUBST(SYSTEMD_SYSTEMUNITDIR)
+AM_CONDITIONAL(SYSTEMD, test -n "${path_systemdsystemunit}")
 fi
 
 # Checks for header files.
@@ -38,7 +38,7 @@ AC_FUNC_FORK
 AC_CHECK_FUNCS([clock_gettime memset strdup])
 
 AC_OUTPUT([
-xorg.service
-xorg.target
+display-manager.service
+display-manager-run.service
 ])
 

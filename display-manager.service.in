@@ -1,0 +1,11 @@
+[Unit]
+Description=Enlightenment desktop environment
+Requires=display-manager-run.service
+After=display-manager-run.service
+
+[Service]
+ExecStart=@prefix@/bin/enlightenment_start
+EnvironmentFile=/etc/sysconfig/xorg
+
+[Install]
+WantedBy=graphical.target

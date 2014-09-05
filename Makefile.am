@@ -1,14 +1,14 @@
 
 EXTRA_DIST = AUTHORS COPYING INSTALL
 
-systemduserunitdir = @SYSTEMD_USERUNITDIR@
-systemduserunit_DATA = xorg.service xorg.target
+systemdsystemunitdir = @SYSTEMD_SYSTEMUNITDIR@
+systemdsystemunit_DATA = display-manager.service display-manager-run.service
 
-systemduserunit-install-hook:
-	mkdir -p $(DESTDIR)$(systemduserunitdir)/xorg.target.wants
-	ln -sf ../xorg.service $(DESTDIR)$(systemduserunitdir)/xorg.target.wants/xorg.service
+systemdsystemunit-install-hook:
+	mkdir -p $(DESTDIR)$(systemdsystemunitdir)/graphical.target.wants
+#	ln -sf ../xorg.service $(DESTDIR)$(systemduserunitdir)/xorg.target.wants/xorg.service
 
-install-data-hook: systemduserunit-install-hook
+install-data-hook: systemdsystemunit-install-hook
 
 AM_CFLAGS = $(LIBSYSTEMD_DAEMON_CFLAGS) -Wall -Wno-uninitialized
 

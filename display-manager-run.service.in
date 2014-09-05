@@ -12,12 +12,13 @@
 # service unit file needs to include 'After=xorg.target'.
 
 [Unit]
-Description=Xorg server launch helper
-Before=xorg.target
+Description=X.Org display daemon
 
 [Service]
-EnvironmentFile=-/etc/sysconfig/xorg
 ExecStart=@prefix@/bin/xorg-launch-helper $OPTIONS
+EnvironmentFile=/etc/sysconfig/xorg
 Restart=always
 RestartSec=10
 
+[Install]
+WantedBy=graphical.target

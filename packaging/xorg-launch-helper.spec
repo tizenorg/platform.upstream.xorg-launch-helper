@@ -32,9 +32,10 @@ make %{?_smp_mflags}
 
 # temoprary HW configuration. it should be seperated.
 mkdir -p %{buildroot}/etc/sysconfig
+mkdir -p %{buildroot}/%{_prefix}/lib/systemd/system/
 install -m 644 %{SOURCE1} %{buildroot}/etc/sysconfig/xorg
-install -m 0644 %{SOURCE2} %{buildroot}%{_prefix}/lib/systemd/user/
-ln -sf ../xorg_done.service %{buildroot}%{_prefix}/lib/systemd/user/xorg.target.wants
+install -m 0644 %{SOURCE2} %{buildroot}%{_prefix}/lib/systemd/system/
+#ln -sf ../xorg_done.service %{buildroot}%{_prefix}/lib/systemd/user/xorg.target.wants
 
 # "-sharevt" option will be removed (only) for Tizen Emulator temporarily
 # by the request from Tizen SDK (kernel) team.
@@ -47,9 +48,10 @@ sed -i 's/-sharevts//g' %{buildroot}/etc/sysconfig/xorg
 %license COPYING
 %defattr(-,root,root,-)
 %{_bindir}/xorg-launch-helper
-%{_prefix}/lib/systemd/user/xorg.service
-%{_prefix}/lib/systemd/user/xorg_done.service
-%{_prefix}/lib/systemd/user/xorg.target
-%{_prefix}/lib/systemd/user/xorg.target.wants/xorg.service
-%{_prefix}/lib/systemd/user/xorg.target.wants/xorg_done.service
+%{_prefix}/lib/systemd/system/display-manager.service
+%{_prefix}/lib/systemd/system/display-manager-run.service
+%{_prefix}/lib/systemd/system/xorg_done.service
+#%{_prefix}/lib/systemd/user/xorg.target
+#%{_prefix}/lib/systemd/user/xorg.target.wants/xorg.service
+#%{_prefix}/lib/systemd/user/xorg.target.wants/xorg_done.service
 /etc/sysconfig/xorg
