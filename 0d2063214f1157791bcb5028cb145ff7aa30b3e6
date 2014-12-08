@@ -1,3 +1,11 @@
+Code-Review+2: Stéphane Desneux (sdx) <stephane.desneux@open.eurogiciel.org>
+Verified+1: Stéphane Desneux (sdx) <stephane.desneux@open.eurogiciel.org>
+Submitted-by: Stéphane Desneux (sdx) <stephane.desneux@open.eurogiciel.org>
+Submitted-at: Mon, 08 Dec 2014 06:20:20 -0800
+Reviewed-on: https://review.tizen.org/gerrit/31655
+Project: platform/upstream/xorg-launch-helper
+Branch: refs/heads/tizen
+
 Reviewed-on: https://review.tizen.org/gerrit/31655
 Project: platform/upstream/xorg-launch-helper
 Branch: refs/heads/tizen
