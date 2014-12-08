@@ -1,11 +1,12 @@
 Name:		xorg-launch-helper
 Version:	4
-Release:	2
+Release:	0
 Summary:	Xorg service helper
 
 Group:		Graphics/X Window System
 License:	GPL-2.0
 URL:		http://foo-projects.org/~sofar/%{name}
+#X-Vc-Url:	https://github.com/sofar/xorg-launch-helper.git
 Source0:	http://foo-projects.org/~sofar/%{name}/%{name}-%{version}.tar.gz
 Source1:	xorg.conf
 Source2:	xorg_done.service
@@ -24,7 +25,7 @@ cp %{SOURCE1001} .
 
 %build
 %reconfigure
-make %{?_smp_mflags}
+%__make %{?_smp_mflags}
 
 
 %install
